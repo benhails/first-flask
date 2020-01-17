@@ -9,7 +9,7 @@ def index(name):
 
 @app.route('/')
 def show():
-    return '<h1>Yo</h1>'
+    return render_template('index.html')
 
 @app.route("/contact")
 def contact():
