@@ -1,15 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/<name>', methods=["GET"]) # Revisit decorators if you unclear of this syntax
-def index(name):
+def name(name):
     name = name.upper()
     signed_in = False
     return render_template('index.html', name=name, signed_in=signed_in)
 
 @app.route('/')
-def show():
-    return render_template('index.html')
+def index():
+    first_name = request.args.get('first_name')
+    return render_template('index.html', first_name=first_name)
 
 @app.route("/contact")
 def contact():
